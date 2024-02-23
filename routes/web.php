@@ -17,3 +17,11 @@ Route::get('/projects/create', [ProjectController::class, 'create'])
 //ROTTA STORE    
 Route::post('/projects/create', [ProjectController::class, 'store'])
     ->name('project.store');
+
+//ROTTA EDIT    
+Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])
+    ->name('project.edit');
+
+//ROTTA UPDATE
+Route::put('/projects/{id}/edit', [ProjectController::class, 'update'])
+    ->name('project.update');

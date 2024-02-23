@@ -23,6 +23,7 @@
                                     {{ $technology->name }}</small>
                             </p>
                         @endforeach
+                        <a href="{{ route('project.edit', $project->id) }}">EDIT</a>
                     </div>
                 </div>
             </div>

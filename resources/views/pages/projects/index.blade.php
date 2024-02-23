@@ -4,6 +4,9 @@
 @endsection
 @section('content')
     <h1>Projects</h1>
+    <a href="{{ route('project.create') }}">
+        CREATE
+    </a>
     @foreach ($projects as $project)
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
@@ -15,6 +18,11 @@
                         <p class="card-text"><small class="text-muted">Nome del tipo:
                                 {{ $project->type->name }}</small>
                         </p>
+                        @foreach ($project->technologies as $technology)
+                            <p class="card-text"><small class="text-muted">Nome della tecnologia:
+                                    {{ $technology->name }}</small>
+                            </p>
+                        @endforeach
                     </div>
                 </div>
             </div>

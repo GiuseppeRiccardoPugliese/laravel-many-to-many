@@ -5,6 +5,17 @@
 @section('content')
     <h1>Edit Project</h1>
 
+    {{-- VALIDATION REQUEST --}}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ route('project.update', $project->id) }}" method="POST">
         @csrf
         @method('PUT')

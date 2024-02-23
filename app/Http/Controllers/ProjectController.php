@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditProjectRequest;
 use Illuminate\Http\Request;
 
 use App\Models\Project;
@@ -25,7 +26,7 @@ class ProjectController extends Controller
         return view('pages.projects.create', compact('types', 'technologies'));
     }
 
-    public function store(Request $request)
+    public function store(EditProjectRequest $request)
     {
 
         $data = $request->all();
@@ -57,7 +58,7 @@ class ProjectController extends Controller
         return view('pages.projects.edit', compact('project', 'types', 'technologies'));
     }
 
-    public function update(Request $request, $id)
+    public function update(EditProjectRequest $request, $id)
     {
 
         $data = $request->all();

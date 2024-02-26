@@ -25,3 +25,7 @@ Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])
 //ROTTA UPDATE
 Route::put('/projects/{id}/edit', [ProjectController::class, 'update'])
     ->name('project.update');
+
+//ROTTA DELETE
+Route::delete('/projects/{id}', [ProjectController::class, 'delete'])
+    ->name('project.delete');

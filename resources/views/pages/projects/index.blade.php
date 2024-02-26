@@ -3,7 +3,8 @@
     <title>Home</title>
 @endsection
 @section('content')
-    <h1>Projects</h1>
+    <h1>Projects: {{ count($projects) }}</h1>
+    {{-- CREATE --}}
     <a href="{{ route('project.create') }}">
         CREATE
     </a>
@@ -23,7 +24,16 @@
                                     {{ $technology->name }}</small>
                             </p>
                         @endforeach
+                        {{-- EDIT --}}
                         <a href="{{ route('project.edit', $project->id) }}">EDIT</a>
+
+                        {{-- DELTE --}}
+                        <form action="{{ route('project.delete', $project->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <input type="submit" id="destroy" name="destroy" value="DELETE">
+                        </form>
                     </div>
                 </div>
             </div>

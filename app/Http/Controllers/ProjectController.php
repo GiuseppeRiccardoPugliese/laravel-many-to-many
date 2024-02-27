@@ -18,6 +18,12 @@ class ProjectController extends Controller
         return view('pages.projects.index', compact('projects'));
     }
 
+    public function show($id)
+    {
+        $project = Project::find($id);
+        return view('pages.projects.show', compact('project'));
+    }
+
     public function create()
     {
         $types = type::all();

@@ -16,7 +16,8 @@
         </div>
     @endif
 
-    <form action="{{ route('project.store') }}" method="POST">
+    {{-- enctype="multipart/form-data" In Laravel, quando si lavora con l'upload di file, è necessario assicurarsi che il tuo form abbia l'attributo enctype impostato su multipart/form-data. Questo consente al browser di codificare correttamente il contenuto del file per l'invio.  --}}
+    <form action="{{ route('project.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
         <label for="title">Title</label>
@@ -31,6 +32,11 @@
                 <option value="{{ $type->id }}">{{ $type->name }}</option>
             @endforeach
         </select>
+        <br>
+        <br>
+        <label for="image">Image</label>
+        <input type="file" name="image" id="image">
+        <br>
         <br>
         <label>
             <b>Technologies:</b>

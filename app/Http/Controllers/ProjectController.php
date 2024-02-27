@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
-
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -37,12 +37,19 @@ class ProjectController extends Controller
 
         $data = $request->all();
 
+        //Gestione img
+        $img = $data['image'];
+        $img_path = Storage::disk('public')->put('images', $img);
+
+        // dd($img, $img_path);
+
         $type = Type::find($data['type_id']);
 
         $project = new Project();
 
         $project->title = $data['title'];
         $project->description = $data['description'];
+        $project->image = $img_path; //Richiamo img_path di sopra
 
         $project->Type()->associate($type);
 

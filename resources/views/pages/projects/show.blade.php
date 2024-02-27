@@ -8,8 +8,8 @@
         <div class="row g-0">
             <div class="col-md-12">
                 <div class="card-body">
-                    <h5 class="card-title">Titolo del progetto: <a
-                            href="{{ route('project.show', $project->id) }}">{{ $project->title }}</a></h5>
+                    <h5 class="card-title fw-bold">Titolo del progetto:
+                        {{ $project->title }}</h5>
                     <p class="card-text">Descrizione del progetto: {{ $project->description }}</p>
 
                     <p class="card-text"><small class="text-muted">Nome del tipo:
@@ -20,7 +20,10 @@
                                 {{ $technology->name }}</small>
                         </p>
                     @endforeach
-                    <img src="" class="img-fluid rounded-start" alt="...">
+
+                    {{-- Gestione per visualizzare la img --}}
+                    <img src="{{ asset('storage/' . $project->image) }}" class="img-fluid rounded-start" alt="..."
+                        width="250px">
 
                 </div>
             </div>

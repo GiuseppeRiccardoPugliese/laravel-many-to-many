@@ -13,7 +13,7 @@
             <div class="row g-0">
                 <div class="col-md-12">
                     <div class="card-body">
-                        <h5 class="card-title">Titolo del progetto: <a
+                        <h5 class="card-title">Titolo del progetto: <a {{-- SHOW --}}
                                 href="{{ route('project.show', $project->id) }}">{{ $project->title }}</a></h5>
                         <p class="card-text">Descrizione del progetto: {{ $project->description }}</p>
 

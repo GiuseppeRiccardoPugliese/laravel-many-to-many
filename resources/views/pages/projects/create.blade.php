@@ -35,7 +35,7 @@
         <br>
         <br>
         <label for="image">Image</label>
-        <input type="file" name="image" id="image">
+        <input type="file" name="image" id="image" accept="image/png">
         <br>
         <br>
         <label>

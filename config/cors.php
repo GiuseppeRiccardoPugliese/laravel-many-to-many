@@ -17,9 +17,9 @@ return [
 
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['GET', 'POST', 'OPTIONS'], //OPTIONS perche' serve a laravel per fare i suoi controlli 
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['http://localhost:5173'],  //DEV FRONTEND(vue)
 
     'allowed_origins_patterns' => [],
 

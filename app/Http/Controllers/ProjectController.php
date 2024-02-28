@@ -76,12 +76,18 @@ class ProjectController extends Controller
 
         $data = $request->all();
 
+        //Gestione img
+        $img = $data['image'];
+        $img_path = Storage::disk('public')->put('images', $img);
+
+
         $type = Type::find($data['type_id']);
 
         $project = Project::find($id);
 
         $project->title = $data['title'];
         $project->description = $data['description'];
+        $project->image = $img_path; //Richiamo img_path di sopra
 
         $project->Type()->associate($type);
 

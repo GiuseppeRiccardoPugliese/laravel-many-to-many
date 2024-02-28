@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form action="{{ route('project.update', $project->id) }}" method="POST">
+    <form action="{{ route('project.update', $project->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <label for="title">Title</label>
@@ -33,6 +33,11 @@
                 </option>
             @endforeach
         </select>
+        <br>
+        <br>
+        <label for="image">Image</label>
+        <input type="file" name="image" id="image">
+        <br>
         <br>
         <label>
             <b>Technologies:</b>

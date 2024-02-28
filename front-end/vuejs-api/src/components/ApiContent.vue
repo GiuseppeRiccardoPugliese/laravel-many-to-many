@@ -10,6 +10,10 @@ export default {
         return {
             technologies: [], //Array per inserire le mie tecnologie
 
+            currentPage: 1, //Salvo la pagina CORRENTE per le PAGINATION
+
+            pageLinks: [], //Array per gestire i LINKS delle PAGINATION
+
             createFormActive: false, //Variabile per l'if & else
 
             newTech: { //Variabile per la nuova Technology
@@ -37,21 +41,26 @@ export default {
                 });
 
             // console.log('submit with:', this.newTech);
+        },
+        changePage(url) {
+            axios.get(url)
+                .then(res => {
+
+                    const data = res.data;
+
+                    if (data.status == 'success')
+                        this.currentPage = data.technologies.current_page;
+                    //Salvo i miei dati
+                    this.pageLinks = data.technologies.links;
+                    this.technologies = data.technologies.data;
+                })
+                .catch(err => {
+                    console.err(err);
+                });
         }
     },
     mounted() {
-
-        axios.get('http://localhost:8000/api/v1/technologies')
-            .then(res => {
-
-                const data = res.data;
-
-                if (data.status == 'success')
-                    this.technologies = data.technologies;
-            })
-            .catch(err => {
-                console.err(err);
-            });
+        this.changePage('http://localhost:8000/api/v1/technologies');
     }
 };
 </script>
@@ -75,4 +84,24 @@ export default {
             </li>
         </ul>
     </div>
+
+    <!-- Gestione delle pagine attraverso l'oggettone link -->
+    <div>
+        <ul>
+            <li v-for="link in pageLinks" :key="link">
+                <button @click="changePage(link.url)" v-html="link.label" :class="link.active ? 'bg-light' : ''" />
+            </li>
+        </ul>
+    </div>
 </template>
+
+<style scoped>
+ul {
+    list-style-type: none;
+}
+
+button.bg-light {
+    background-color: white;
+    color: black;
+}
+</style>

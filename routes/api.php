@@ -28,4 +28,7 @@ Route::group(['prefix' => '/v1'], function () {
 
     //Rotta per le mie Technologies
     Route::get('technologies', [ApiController::class, 'getTechnologies']);
+
+    //Rotta per prendere la nuova Tech in POST
+    Route::post('technologies', [ApiController::class, 'createTech']);
 });
